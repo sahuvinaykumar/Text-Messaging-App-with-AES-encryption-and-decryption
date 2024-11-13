@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Whatsapp(6)</string>
+    <string name="settings_desc" />
+    <string name="chat_desc" />
+    <string name="camera_desc" />
+    <string name="logout_desc" />
+</resources>
