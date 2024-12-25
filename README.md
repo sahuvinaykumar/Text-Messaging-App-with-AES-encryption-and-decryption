@@ -19,8 +19,6 @@ The app uses Firebase as a backend for storing messages and user data, while AES
 
 ## Screenshots
 
-Here, you can add screenshots of your app's interface to give users a visual idea of how it looks.
-
 ![Screenshot 2024-12-01 141101](https://github.com/user-attachments/assets/812dbed0-20f3-40dd-964e-d09e8f027927)
 
 ![Screenshot 2024-12-01 141222](https://github.com/user-attachments/assets/0c465dfd-fb1f-4f18-94d1-9d3801ba6e51)
