@@ -1,5 +1,6 @@
 package com.example.whatsapp6;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdpter extends RecyclerView.Adapter<UserAdpter.viewholder> {
-    MainActivity mainActivity;
+    Context mainActivity;
     ArrayList<Users> usersArrayList;
     public UserAdpter(MainActivity mainActivity, ArrayList<Users> usersArrayList) {
         this.mainActivity=mainActivity;

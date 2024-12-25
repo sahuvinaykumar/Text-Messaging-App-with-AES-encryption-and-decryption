@@ -1,3 +1,4 @@
+
 package com.example.whatsapp6;
 
 import android.content.Context;
@@ -6,6 +7,8 @@ import android.content.SharedPreferences;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
 import java.util.Base64;
 
 public class AESUtils {
@@ -48,12 +51,24 @@ public class AESUtils {
     }
 
     // Method to decrypt a message using AES
-    public static String decrypt(String encryptedMessage, SecretKey key) throws Exception {
+    public static String decrypt(String encryptedMessageWithKey, SecretKey key) throws Exception {
+
+        String secretKeyBase64 = encryptedMessageWithKey.substring(encryptedMessageWithKey.length() - 24);
+
+        String encryptedMessage = encryptedMessageWithKey.substring(0, encryptedMessageWithKey.length() - 24);
+
+        SecretKey extractedKey;
+        extractedKey = new SecretKeySpec(Base64.getDecoder().decode(secretKeyBase64), "AES");
+
+
         Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, key);
+        cipher.init(Cipher.DECRYPT_MODE, extractedKey);
         byte[] decodedBytes = Base64.getDecoder().decode(encryptedMessage); // Decode from base64
         byte[] decryptedBytes = cipher.doFinal(decodedBytes);
         return new String(decryptedBytes);  // Convert bytes back to a string
     }
-}
 
+    public static String keyToBase64String(SecretKey key) {
+        return Base64.getEncoder().encodeToString(key.getEncoded());
+    }
+}

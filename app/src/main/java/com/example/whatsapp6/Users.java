@@ -1,29 +1,17 @@
 package com.example.whatsapp6;
 
 public class Users {
-    String userId, userName, mail, password, profilepic, status;
-    String lastMessage; // Added this since you're using it in the getters/setters
+    String profilepic,mail,userName,password,userId,lastMessage,status;
 
-    // Default constructor
-    public Users() {}
+    public  Users(){}
 
-    // Parameterized constructor
-    public Users(String userId, String userName, String mail, String password, String profilepic, String status) {
+    public Users(String userId, String userName, String maill, String password, String profilepic, String status) {
         this.userId = userId;
         this.userName = userName;
-        this.mail = mail;
+        this.mail = maill;
         this.password = password;
         this.profilepic = profilepic;
         this.status = status;
-    }
-
-    // Getters and setters
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
     public String getProfilepic() {
@@ -32,6 +20,14 @@ public class Users {
 
     public void setProfilepic(String profilepic) {
         this.profilepic = profilepic;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getUserName() {

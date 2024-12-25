@@ -15,10 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.whatsapp6.MainActivity;
-import com.example.whatsapp6.R;
-import com.example.whatsapp6.Users;
-import com.example.whatsapp6.login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;

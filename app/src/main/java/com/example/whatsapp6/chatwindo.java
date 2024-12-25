@@ -1,5 +1,7 @@
 package com.example.whatsapp6;
 
+import static com.example.whatsapp6.AESUtils.keyToBase64String;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -124,6 +126,19 @@ public class chatwindo extends AppCompatActivity {
             }
         });
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                senderImg= snapshot.child("profilepic").getValue().toString();
+                reciverIImg=reciverimg;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         // Set up the send button click listener
         sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,11 +152,15 @@ public class chatwindo extends AppCompatActivity {
                 try {
                     // Encrypt the message before sending it
                     String encryptedMessage = AESUtils.encrypt(message, secretKey);
+                    String secretKeyBase64 = keyToBase64String(secretKey);
+                    encryptedMessage = encryptedMessage + secretKeyBase64.substring(0, 24);
 
                     // Create a new message object
+
                     msgModelclass messagess = new msgModelclass(encryptedMessage, SenderUID, new Date().getTime());
 
                     // Store the encrypted message in Firebase for both sender and receiver
+                    database=FirebaseDatabase.getInstance();
                     database.getReference().child("chats")
                             .child(senderRoom)
                             .child("messages")
